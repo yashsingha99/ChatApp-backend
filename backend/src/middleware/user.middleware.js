@@ -7,9 +7,9 @@ const verifyJwt = asyncHandler(async(req, res, next)=>{
   try {
     const token = req.body.user
     
-    if (!token) {
-        throw new ApiError(401, "Unauthorized request")
-    }
+    // if (!token) {
+    //     throw new ApiError(401, "Unauthorized request")
+    // }
     next()
 } catch (error) {
     throw new ApiError(401, error?.message || "Invalid access token")

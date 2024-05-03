@@ -24,7 +24,7 @@ const accessChat = asyncHandler(async (req, res) => {
 const fetchChats = asyncHandler(async (req, res) => {
   const user = req.body.user;
   try {
-    await Chat.find({ users: { $elemMatch: { $eq: user._id } } }) //* Firstly  find  the  chat documents
+    await Chat.find({ users: { $elemMatch: { $eq: user?._id } } }) //* Firstly  find  the  chat documents
       .populate("latestMessage") //*  using currentUser_id  then populate
       .populate("users", "-password") //* all of the thing
       .populate("groupAdmin", "-password")
